@@ -2,7 +2,7 @@
 
 The New York City Department of Finance Digital Tax Map is a system of editing and publishing components that is the city tax map of record.  The Department of Finance has historically used ArcGIS Desktop Software to edit an ESRI Enterprise Geodatabase hosted at the NYC Office of Technology and Innovation (formerly DoITT).
 
-The goal of this repository is to help migrate the database from a legacy 10.2 ESRI Enterprise Geodatabase on Oracle 11g to a supported geodatabase on Oracle 19c.
+The goal of this repository is to help migrate the database from a legacy 10.2 ESRI User-Schema Enterprise Geodatabase on Oracle 11g to a supported geodatabase on Oracle 19c.
 
 
 ## Schema Inventory
@@ -185,3 +185,12 @@ every table duplicated with some data in each schema.
 * JTX_USER_GROUP_JOB_FILTERS
 * JTX_USER_GROUP_XREF
 * JTX_WORKFLOW_STORE
+
+
+# Super Basic Test 
+
+```bat
+> set SDEFILE=X:\yyy\zzz.sde
+> set PYTHONPATH=X:\geodatabase-toiler\src\py;%PYTHONPATH%
+> testall.bat
+```
