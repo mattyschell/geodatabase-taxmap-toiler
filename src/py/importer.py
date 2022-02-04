@@ -1,8 +1,9 @@
 import sys
 import os
 import logging
+import arcpy
 
-# SET PYTHONPATH=C:\gis\geodatabase-toiler\src\py
+# SET PYTHONPATH=C:\XX\geodatabase-toiler\src\py
 import gdb
 import fc
 
@@ -18,10 +19,9 @@ class Importmanager(object):
         self.targetfc = fc.Fc(self.gdb
                              ,self.name)
 
-
     def delete(self):
 
-        #check for locks buddy
+        #caller should check for locks
 
         if self.targetfc.exists():
             self.targetfc.delete()
@@ -32,12 +32,14 @@ class Importmanager(object):
         self.gdb.importfeatureclass(sourcefc
                                    ,self.name)
 
-    def qa():
+    def qa(self
+          ,sourcefc):
 
-        # versioned views on target
-        # count tool on source !
-
-        return True
+        if arcpy.GetCount_management(sourcefc)[0] == \
+           arcpy.GetCount_management(self.targetfc.featureclass)[0]:
+            return True
+        else:
+            return False
 
 if __name__ == "__main__":
 
@@ -50,8 +52,13 @@ if __name__ == "__main__":
     layer = Importmanager(targetgdb,
                           targetfcname)
 
-    layer.delete()
+    if not layer.targetfc.locksexist():
+        layer.delete()
+    else:
+        raise ValueError('Cannot import, the target exists and is locked')
+
     layer.copy(sourcefc)
 
-    if not layer.qa():
+    if not layer.qa(sourcefc):
         logging.error('failed qa of {0}'.format(layer.name))
+        

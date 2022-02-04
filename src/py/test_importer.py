@@ -20,7 +20,6 @@ class ImporterTestCase(unittest.TestCase):
                                   ,'resources'
                                   ,'nybb.shp')
 
-
     @classmethod
     def tearDownClass(self):
 
@@ -28,9 +27,9 @@ class ImporterTestCase(unittest.TestCase):
 
     def test_acopy(self):
 
-        # incomplete test
-        # check counts
         self.target.copy(self.srcshp)
+
+        self.assertTrue(self.target.qa(self.srcshp)) 
 
 if __name__ == '__main__':
     unittest.main()
