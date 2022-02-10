@@ -19,6 +19,17 @@ class Importmanager(object):
         self.targetfc = fc.Fc(self.gdb
                              ,self.name)
 
+    def getlistof(self,
+                  whichlist):
+
+        with open(os.path.join(os.path.dirname(__file__)
+                              ,'resources'
+                              ,whichlist)) as l:
+
+            contents = l.readlines()
+
+        return contents                    
+
     def delete(self):
 
         #caller should check for locks

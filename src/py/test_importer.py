@@ -16,9 +16,11 @@ class ImporterTestCase(unittest.TestCase):
         self.target = importer.Importmanager(self.testgdb
                                             ,'NYBB')
 
+        self.namestocopy = self.target.getlistof('shapefiles')
+
         self.srcshp = os.path.join(os.path.dirname(__file__)
                                   ,'resources'
-                                  ,'nybb.shp')
+                                  ,self.namestocopy[0])
 
     @classmethod
     def tearDownClass(self):
