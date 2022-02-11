@@ -16,11 +16,11 @@ class ImporterTestCase(unittest.TestCase):
         self.target = importer.Importmanager(self.testgdb
                                             ,'NYBB')
 
-        self.namestocopy = self.target.getlistof('shapefiles')
+        self.testobjects = importer.Importlistmanager('shapefiles')
 
         self.srcshp = os.path.join(os.path.dirname(__file__)
                                   ,'resources'
-                                  ,self.namestocopy[0])
+                                  ,self.testobjects.names[0])
 
     @classmethod
     def tearDownClass(self):
@@ -32,6 +32,11 @@ class ImporterTestCase(unittest.TestCase):
         self.target.copy(self.srcshp)
 
         self.assertTrue(self.target.qa(self.srcshp)) 
+
+    def test_bdeletenoexist(self):
+
+        self.target.delete()
+        self.assertFalse(self.target.qa(self.srcshp)) 
 
 if __name__ == '__main__':
     unittest.main()

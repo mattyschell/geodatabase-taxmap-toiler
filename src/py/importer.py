@@ -8,6 +8,20 @@ import gdb
 import fc
 
 
+class Importlistmanager(object):
+
+    def __init__(self,
+                 whichlist):
+
+        with open(os.path.join(os.path.dirname(__file__)
+                              ,'resources'
+                              ,whichlist)) as l:
+
+            contents = l.readlines()
+
+        self.names = contents     
+
+
 class Importmanager(object):
 
     def __init__(self
@@ -18,21 +32,11 @@ class Importmanager(object):
         self.name = targetfcname
         self.targetfc = fc.Fc(self.gdb
                              ,self.name)
-
-    def getlistof(self,
-                  whichlist):
-
-        with open(os.path.join(os.path.dirname(__file__)
-                              ,'resources'
-                              ,whichlist)) as l:
-
-            contents = l.readlines()
-
-        return contents                    
+       
 
     def delete(self):
 
-        #caller should check for locks
+        #check for locks
 
         if self.targetfc.exists():
             self.targetfc.delete()
@@ -46,10 +50,16 @@ class Importmanager(object):
     def qa(self
           ,sourcefc):
 
-        if arcpy.GetCount_management(sourcefc)[0] == \
-           arcpy.GetCount_management(self.targetfc.featureclass)[0]:
-            return True
+        if self.targetfc.exists():
+
+            if arcpy.GetCount_management(sourcefc)[0] == \
+            arcpy.GetCount_management(self.targetfc.featureclass)[0]:
+                return True
+            else:
+                return False
+        
         else:
+        
             return False
 
 if __name__ == "__main__":
