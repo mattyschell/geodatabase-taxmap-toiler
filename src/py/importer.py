@@ -32,7 +32,6 @@ class Importmanager(object):
         self.name = targetfcname
         self.targetfc = fc.Fc(self.gdb
                              ,self.name)
-       
 
     def delete(self):
 
@@ -44,8 +43,19 @@ class Importmanager(object):
     def copy(self
             ,sourcefc):
 
-        self.gdb.importfeatureclass(sourcefc
-                                   ,self.name)
+        desc = arcpy.Describe(sourcefc)
+
+        if (desc.dataType == 'FeatureClass' \
+        or desc.dataType == 'ShapeFile'):
+
+            self.gdb.importfeatureclass(sourcefc
+                                       ,self.name)
+
+        elif desc.dataType == 'Table':
+            
+            self.gdb.importtable(sourcefc
+                                ,self.name)
+
 
     def qa(self
           ,sourcefc):

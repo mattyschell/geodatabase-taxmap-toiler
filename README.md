@@ -15,6 +15,16 @@ The code is mostly opinionated wrappers to [geodatabase-toiler](https://github.c
 > testall.bat
 ```
 
+# Migrate 
+
+Will delete everything on the destination, then import all.
+
+```bat
+> set SDEFILE=X:\yyy\zzz.sde
+> set PYTHONPATH=C:\gis\geodatabase-taxmap-toiler\src\py;C:\gis\geodatabase-toiler\src\py;%PYTHONPATH%
+> import.bat "A:\bbb\ccc\srcschema.sde"
+```
+
 
 ## Schema Inventory
 
