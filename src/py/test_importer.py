@@ -33,7 +33,6 @@ class ImporterTestCase(unittest.TestCase):
 
         self.target.delete()
 
-    @classmethod
     def tearDown(self):
 
         self.target.delete()
@@ -55,7 +54,7 @@ class ImporterTestCase(unittest.TestCase):
         self.target.copy(self.srcdbf)
 
         self.assertTrue(self.target.qa(self.srcdbf)) 
-        
+
 
 if __name__ == '__main__':
     unittest.main()

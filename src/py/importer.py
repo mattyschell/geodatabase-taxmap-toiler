@@ -17,9 +17,9 @@ class Importlistmanager(object):
                               ,'resources'
                               ,whichlist)) as l:
 
-            contents = l.readlines()
+            contents = [line.strip() for line in l]
 
-        self.names = contents     
+        self.names = contents
 
 
 class Importmanager(object):
@@ -41,21 +41,20 @@ class Importmanager(object):
             self.targetfc.delete()
 
     def copy(self
-            ,sourcefc):
+            ,source):
 
-        desc = arcpy.Describe(sourcefc)
+        datatype = arcpy.Describe(source).dataType
 
-        if (desc.dataType == 'FeatureClass' \
-        or desc.dataType == 'ShapeFile'):
+        if (datatype == 'FeatureClass' \
+        or  datatype == 'ShapeFile'):
 
-            self.gdb.importfeatureclass(sourcefc
+            self.gdb.importfeatureclass(source
                                        ,self.name)
 
-        elif desc.dataType == 'Table':
-            
-            self.gdb.importtable(sourcefc
-                                ,self.name)
+        elif datatype == 'Table':
 
+            self.gdb.importtable(source
+                                ,self.name)
 
     def qa(self
           ,sourcefc):

@@ -2,12 +2,14 @@
 
 The New York City Department of Finance Digital Tax Map is a system of editing and publishing components that is the tax map of record.  The Department of Finance has historically used ArcGIS Desktop Software to edit an ESRI Enterprise Geodatabase hosted at the NYC Office of Technology and Innovation (formerly DoITT).
 
-The goal of this repository is to help migrate the database from a legacy 10.2 ESRI User-Schema Enterprise Geodatabase on Oracle 11g to a supported geodatabase on Oracle 19c.
+The goal of this repository is to help migrate the database from a legacy 10.2 ESRI User-Schema Enterprise Geodatabase on Oracle 11g to a supported ESRI Enterprise Geodatabase on Oracle 19c.
 
 The code is mostly opinionated wrappers to [geodatabase-toiler](https://github.com/mattyschell/geodatabase-toiler).  Friends, this our taxmap toiling in an ESRI Enterprise Geodatabase, our rules, the trick is never to be afraid.
 
 
 # Tests
+
+Basic stuff here. Requires a scratch Oracle database schema.
 
 ```bat
 > set SDEFILE=X:\yyy\zzz.sde
@@ -15,16 +17,21 @@ The code is mostly opinionated wrappers to [geodatabase-toiler](https://github.c
 > testall.bat
 ```
 
-# Migrate 
+# Migrate DOF_TAXMAP 
 
-Will delete everything on the destination, then import all.
+The sample will delete everything on the destination, then import all. Edit the sample and rename it for any migration.
+
+Edit the inventories under src/resources
+
+* Cadastral
+* featureclasses
+* tables
 
 ```bat
 > set SDEFILE=X:\yyy\zzz.sde
-> set PYTHONPATH=C:\gis\geodatabase-taxmap-toiler\src\py;C:\gis\geodatabase-toiler\src\py;%PYTHONPATH%
-> import.bat "A:\bbb\ccc\srcschema.sde"
+> set PYTHONPATH=C:\xxx\geodatabase-taxmap-toiler\src\py;C:\xxx\geodatabase-toiler\src\py;%PYTHONPATH%
+> sample_import.bat 
 ```
-
 
 ## Schema Inventory
 
