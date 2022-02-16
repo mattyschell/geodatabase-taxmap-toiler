@@ -38,24 +38,22 @@ Edit the inventories under src/resources.
 ## Schema Inventory
 
 * DOF_EDITOR
-* DOF_TAXMAP (see Data Inventory)
-* JTX (full schema)
-    * Does this need to be brought or can it be created new?
-    * What about jtx_% tables in DOF_TAXMAP?
-
+    * Will be empty unless ESRI writes out keyset and log tables
+* DOF_TAXMAP 
+    * See Data Inventory below
+* JTX_ADMIN 
+    * 5 GB, migration TBD
 
 ## Role Inventory
 
 * DOF_TAXMAP_EDITOR
 * TAXMAP_VIEWER
 
-
 ## Versions
 
 * DEFAULT
     * DOF_PRODUCTION
         * DOF_EDITOR.*
-
 
 ## Data Inventory
 
@@ -144,8 +142,7 @@ Mixed case ESRI feature classes exist where indicated.
 
 ## ESRI Workflow Manager
 
-Workflow manager data is spread across both schemas,
-every table duplicated with some data in each schema.
+Workflow manager data is in the JTX schema.
 
 * JTX_ACTIVITY_TYPES
 * JTX_AUX_PROPS

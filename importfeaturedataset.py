@@ -30,7 +30,12 @@ if __name__ == "__main__":
     # cluephone ringaling, no feature dataset manager in 
     # geodatabase-toiler was intentional, but maybe should do
     arcpy.CreateFeatureDataset_management(targetgdb.sdeconn
-                                         ,fdname)
+                                         ,fdname
+                                         ,os.path.join(os.path.dirname(__file__)
+                                                      ,'src'
+                                                      ,'py'
+                                                      ,'resources'
+                                                      ,'epsg_2263.prj'))
 
     # will someone answer the phone
     # hack feature dataset name onto the the target "Output location"

@@ -7,6 +7,6 @@ set PROPY=c:\Progra~1\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe
 CALL %PROPY% deletefeaturedataset.py Cadastral
 CALL %PROPY% deleteall.py featureclasses
 CALL %PROPY% deleteall.py tables
-CALL %PROPY% importall.py featureclasses %SRCSDE%
 CALL %PROPY% importfeaturedataset.py Cadastral %SRCSDE%
+CALL %PROPY% importall.py featureclasses %SRCSDE%
 CALL %PROPY% importall.py tables %SRCSDE%
