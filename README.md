@@ -1,8 +1,10 @@
 # geodatabase-taxmap-toiler
 
-The New York City Department of Finance Digital Tax Map is a system of editing and publishing components that is the tax map of record.  The Department of Finance has historically used ArcGIS Desktop Software to edit an ESRI Enterprise Geodatabase hosted at the NYC Office of Technology and Innovation (formerly DoITT).
+The New York City Department of Finance Digital Tax Map is a system of editing and publishing components that is the tax map of record.  The Department of Finance has historically used customized ArcGIS Desktop Software, aka "The Wizards," to edit an ESRI Enterprise Geodatabase hosted at the NYC Office of Technology and Innovation (formerly DoITT).
 
-The goal of this repository is to help migrate the database from a legacy 10.2 ESRI User-Schema Enterprise Geodatabase on Oracle 11g to a supported ESRI Enterprise Geodatabase on Oracle 19c.
+![wizards](wizards.png)
+
+The goal of this repository is to help migrate the database components supporting Department of Finance editing from a legacy 10.2 ESRI User-Schema Enterprise Geodatabase on Oracle 11g to a supported ESRI Enterprise Geodatabase on Oracle 19c.  We will pay no mind to requirements like publishing to the web application or NYC Open Data.
 
 The code is mostly opinionated wrappers to [geodatabase-toiler](https://github.com/mattyschell/geodatabase-toiler).  Friends, this our taxmap toiling in an ESRI Enterprise Geodatabase, our rules, the trick is never to be afraid.
 
@@ -21,7 +23,7 @@ Basic stuff here. Requires a scratch Oracle database schema.
 
 The sample will delete everything on the destination, then import all. Edit the sample and rename it for any migration.
 
-Edit the inventories under src/resources
+Edit the inventories under src/resources.  
 
 * Cadastral
 * featureclasses
