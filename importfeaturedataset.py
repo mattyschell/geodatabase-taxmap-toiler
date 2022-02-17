@@ -21,14 +21,15 @@ if __name__ == "__main__":
     namestoimport = importer.Importlistmanager(fdname)
     
     targetgdb = gdb.Gdb()
+    featuredataset = "{0}/{1}".format(targetgdb.sdeconn,fdname)
 
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
     logger.info('creating feature dataset {0}'.format(fdname))
 
-    # cluephone ringaling, no feature dataset manager in 
-    # geodatabase-toiler was intentional, but maybe should do
+    # cluephone ringing, no feature dataset manager in geodatabase-toiler
+    # this was intentional, now I take the L
     arcpy.CreateFeatureDataset_management(targetgdb.sdeconn
                                          ,fdname
                                          ,os.path.join(os.path.dirname(__file__)
@@ -37,9 +38,8 @@ if __name__ == "__main__":
                                                       ,'resources'
                                                       ,'epsg_2263.prj'))
 
-    # will someone answer the phone
     # hack feature dataset name onto the the target "Output location"
-    targetgdb.sdeconn = "{0}/{1}".format(targetgdb.sdeconn,fdname)
+    targetgdb.sdeconn = featuredataset
 
     for name in namestoimport.names:
 
@@ -54,3 +54,5 @@ if __name__ == "__main__":
                                                      ,name)))
 
     logger.info('completed importing {0}'.format(fdname))
+    
+    

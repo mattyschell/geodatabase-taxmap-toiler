@@ -10,3 +10,4 @@ CALL %PROPY% deleteall.py tables
 CALL %PROPY% importfeaturedataset.py Cadastral %SRCSDE%
 CALL %PROPY% importall.py featureclasses %SRCSDE%
 CALL %PROPY% importall.py tables %SRCSDE%
+CALL %PROPY% buildpossessionhooktopology.py Cadastral

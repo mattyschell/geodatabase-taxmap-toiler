@@ -19,7 +19,7 @@ class Importlistmanager(object):
 
             contents = [line.strip() for line in l]
 
-        self.names = contents
+        self.names = contents       
 
 
 class Importmanager(object):
