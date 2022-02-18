@@ -56,6 +56,23 @@ class Importmanager(object):
             self.gdb.importtable(source
                                 ,self.name)
 
+    def stickycopy(self
+                  ,source):
+            
+        print("sc line 62")
+        # you must know what will be stuck here
+        # like another feature layer in a relationship class
+        # Better to copy one by one and then 
+        # create support objects?
+        # A: Yes, the code documents the schema
+        print("{0}".format(source))
+        print("{0}".format(self.targetfc.featureclass))
+
+        
+        arcpy.management.Copy(source
+                             ,self.targetfc.featureclass)
+
+
     def qa(self
           ,sourcefc):
 

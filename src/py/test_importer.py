@@ -1,5 +1,6 @@
 import unittest
 import os
+import pathlib
 
 import gdb
 import importer
@@ -18,24 +19,29 @@ class ImporterTestCase(unittest.TestCase):
 
         self.testobjects = importer.Importlistmanager('test_shapefiles')
 
-        self.srcshp = os.path.join(os.path.dirname(__file__)
+        self.srcshp = os.path.join(pathlib.Path(__file__).parent.resolve()
                                   ,'resources'
                                   ,self.testobjects.names[0])
 
         self.testobjects = importer.Importlistmanager('test_tables')
 
-        self.srcdbf = os.path.join(os.path.dirname(__file__)
+        self.srcdbf = os.path.join(pathlib.Path(__file__).parent.resolve()
                                   ,'resources'
                                   ,self.testobjects.names[0])
+
+        self.target2 = importer.Importmanager(self.testgdb
+                                            ,'NYBB2')
 
     @classmethod
     def tearDownClass(self):
 
         self.target.delete()
+        self.target2.delete()
 
     def tearDown(self):
 
         self.target.delete()
+        self.target2.delete()
 
     def test_acopy(self):
 
@@ -54,6 +60,17 @@ class ImporterTestCase(unittest.TestCase):
         self.target.copy(self.srcdbf)
 
         self.assertTrue(self.target.qa(self.srcdbf)) 
+        
+    def test_dstickycopy(self):
+
+        # just tests copy, not stickyness
+        
+        # must be same types (in and out)
+        self.target.copy(self.srcshp)        
+        
+        self.target2.stickycopy(self.target.targetfc.featureclass)
+
+        self.assertTrue(self.target2.qa(self.srcshp)) 
 
 
 if __name__ == '__main__':
