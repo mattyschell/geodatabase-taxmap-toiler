@@ -1,6 +1,7 @@
 import sys
 import os
 import logging
+import datetime
 
 # SET PYTHONPATH=C:\gis\geodatabase-toiler\src\py
 # SET PYTHONPATH=C:\gis\geodatabase-taxmap-toiler\src\py
@@ -18,26 +19,30 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
-    logger.info('building possession hook topology in {0}'.format(fdname))
+    logger.info('building possession hook topology in {0} at {1}'.format(fdname
+                                                                        ,datetime.datetime.now()))
 
-    arcpy.CreateTopology_management(targetgdb.sdeconn
+    arcpy.management.CreateTopology(targetgdb.sdeconn
                                    ,"Possession_Hook_Topology"
                                    ,.0005274907)
     
     # targetgdb.sdeconn includes feature dataset
     # C:\gis\xx.sde\Cadastral\
-    arcpy.AddFeatureClassToTopology_management(os.path.join(targetgdb.sdeconn,'Possession_Hook_Topology')
+    arcpy.management.AddFeatureClassToTopology(os.path.join(targetgdb.sdeconn,'Possession_Hook_Topology')
                                               ,os.path.join(targetgdb.sdeconn,'Possession_Hooks')
                                               ,1
                                               ,1)
 
-    arcpy.AddFeatureClassToTopology_management(os.path.join(targetgdb.sdeconn,'Possession_Hook_Topology')
+    arcpy.management.AddFeatureClassToTopology(os.path.join(targetgdb.sdeconn,'Possession_Hook_Topology')
                                               ,os.path.join(targetgdb.sdeconn,'Boundary')
                                               ,1
                                               ,1)
 
-    arcpy.AddRuleToTopology_management(os.path.join(targetgdb.sdeconn,'Possession_Hook_Topology')
+    arcpy.management.AddRuleToTopology(os.path.join(targetgdb.sdeconn,'Possession_Hook_Topology')
                                       ,"Must Be Covered By (Point-Line)"
                                       ,os.path.join(targetgdb.sdeconn,'Possession_Hooks')
                                       ,""
                                       ,os.path.join(targetgdb.sdeconn,'Boundary'))
+
+    logger.info('completed building possession hook topology in {0} at {1}'.format(fdname
+                                                                                  ,datetime.datetime.now()))

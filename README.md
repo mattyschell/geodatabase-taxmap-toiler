@@ -30,8 +30,6 @@ Edit the inventories under src/resources.
 * tables
 
 ```bat
-> set SDEFILE=X:\yyy\zzz.sde
-> set PYTHONPATH=C:\xxx\geodatabase-taxmap-toiler\src\py;C:\xxx\geodatabase-toiler\src\py;%PYTHONPATH%
 > sample_import.bat 
 ```
 
@@ -71,7 +69,7 @@ Mixed case ESRI feature classes exist where indicated.
     * Tax_Lot_Face
     * Tax_Lot_Polygon
     * Relationship Classes
-        Polygon_Face_Relationship
+        * Polygon_Face_Relationship
     * Topology
         * Possession_Hook_Topology
         * Tax_Lot_Topology
@@ -108,6 +106,12 @@ Mixed case ESRI feature classes exist where indicated.
 * REUC_Lots
 * SUB_LABEL
 * Subterranean_Lots
+
+### Views
+
+The editing wizards use no views.  
+
+Use caution if examining views on the source environments.  One view (condo_unit) is so poorly defined that previewing it in ESRI software will fire off automated database alerts!
 
 ### Relationship Classes
 

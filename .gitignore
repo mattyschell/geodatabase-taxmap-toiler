@@ -150,3 +150,6 @@ scratch/
 
 #vs
 .vscode*
+
+# dont commit actual batch scripts, ex migrate_stg2dev.bat
+migrate_*.bat

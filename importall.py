@@ -1,6 +1,7 @@
 import sys
 import os
 import logging
+import datetime
 
 # SET PYTHONPATH=C:\gis\geodatabase-toiler\src\py
 # SET PYTHONPATH=C:\gis\geodatabase-taxmap-toiler\src\py
@@ -25,7 +26,8 @@ if __name__ == "__main__":
 
     for name in namestoimport.names:
 
-        logger.info('importing {0}'.format(name))
+        logger.info('importing {0} at {1}'.format(name
+                                                 ,datetime.datetime.now()))
 
         target = importer.Importmanager(targetgdb
                                        ,name)
@@ -33,4 +35,5 @@ if __name__ == "__main__":
         target.copy(os.path.join(srcsde
                                 ,name))
 
-    logger.info('completed importing {0}'.format(listname))
+    logger.info('completed importing {0} at {1}'.format(listname
+                                                       ,datetime.datetime.now()))

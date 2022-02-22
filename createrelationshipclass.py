@@ -1,5 +1,6 @@
 import sys
 import logging
+import datetime
 
 # SET PYTHONPATH=C:\gis\geodatabase-toiler\src\py
 # SET PYTHONPATH=C:\gis\geodatabase-taxmap-toiler\src\py
@@ -27,7 +28,8 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
-    logger.info('creating relationship class {0}'.format(relclassname))
+    logger.info('creating relationship class {0} at {1}'.format(relclassname
+                                                               ,datetime.datetime.now()))
 
     arcpy.management.CreateRelationshipClass(origin
                                             ,destination
@@ -40,4 +42,7 @@ if __name__ == "__main__":
                                             ,attributed
                                             ,origin_pkc
                                             ,origin_fkc)
+
+    logger.info('completed creating relationship class {0} at {1}'.format(relclassname
+                                                                         ,datetime.datetime.now()))
 

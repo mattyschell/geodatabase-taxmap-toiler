@@ -1,6 +1,7 @@
 import sys
 import os
 import logging
+import datetime
 
 # SET PYTHONPATH=C:\gis\geodatabase-toiler\src\py
 # SET PYTHONPATH=C:\gis\geodatabase-taxmap-toiler\src\py
@@ -26,7 +27,8 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
-    logger.info('creating feature dataset {0}'.format(fdname))
+    logger.info('creating feature dataset {0} at {1}'.format(fdname
+                                                            ,datetime.datetime.now()))
 
     # cluephone ringing, no feature dataset manager in geodatabase-toiler
     # this was intentional, now I take the L
@@ -43,7 +45,8 @@ if __name__ == "__main__":
 
     for name in namestoimport.names:
 
-        logger.info('importing {0}'.format(name))        
+        logger.info('importing {0} at {1}'.format(name
+                                                 ,datetime.datetime.now()))        
         
         target = importer.Importmanager(targetgdb
                                        ,name)
@@ -53,6 +56,11 @@ if __name__ == "__main__":
                                                      ,fdname
                                                      ,name)))
 
-    logger.info('completed importing {0}'.format(fdname))
+        
+        logger.info('completed importing {0} at {1}'.format(name
+                                                           ,datetime.datetime.now()))        
+        
+    logger.info('completed importing {0} at {1}'.format(fdname
+                                                       ,datetime.datetime.now()))
     
     
