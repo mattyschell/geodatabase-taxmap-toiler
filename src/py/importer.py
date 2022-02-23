@@ -66,6 +66,10 @@ class Importmanager(object):
         arcpy.management.Copy(source
                              ,self.targetfc.featureclass)
 
+    def version(self):
+
+        self.targetfc.version()
+
     def qa(self
           ,sourcefc):
 

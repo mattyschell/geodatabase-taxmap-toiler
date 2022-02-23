@@ -6,7 +6,7 @@ The New York City Department of Finance Digital Tax Map is a system of editing a
 
 The goal of this repository is to help migrate the database components supporting Department of Finance editing from a legacy 10.2 ESRI User-Schema Enterprise Geodatabase on Oracle 11g to a supported ESRI Enterprise Geodatabase on Oracle 19c.  We will pay no mind to requirements like publishing to the web application or NYC Open Data.
 
-The code is mostly opinionated wrappers to [geodatabase-toiler](https://github.com/mattyschell/geodatabase-toiler).  Friends, this our taxmap toiling in an ESRI Enterprise Geodatabase, our rules, the trick is never to be afraid.
+The code is mainly scripts and convenience wrappers to [geodatabase-toiler](https://github.com/mattyschell/geodatabase-toiler), accounting for some of the patterns in this application that the geodatabase-toiler does not manage.  Friends, this our taxmap toiling in an ESRI Enterprise Geodatabase, our rules, the trick is never to be afraid.
 
 
 # Tests
@@ -49,6 +49,8 @@ Edit the inventories under src/resources.
 
 ## Versions
 
+This repository will not create versions. For reference:  
+
 * DEFAULT
     * DOF_PRODUCTION
         * DOF_EDITOR.*
@@ -57,7 +59,9 @@ Edit the inventories under src/resources.
 
 Mixed case ESRI feature classes exist where indicated.
 
-### Spatial Data: Editable
+### Spatial Data
+
+Registered as versioned and is edited.
 
 * "Cadastral" feature dataset
     * Boundary
@@ -74,40 +78,45 @@ Mixed case ESRI feature classes exist where indicated.
         * Possession_Hook_Topology
         * Tax_Lot_Topology
 
-### Tables: Editable
+### Tables
 
 Some of these tables store Portable Document Formatted maps as Binary Large Objects and are large.  To keep the migration process simple we migrate them with arcpy but this is not ideal. 
 
-1. AIR_LABEL
-2. Air_Rights_Condos
-3. Air_Rights_Holders
-4. Air_Rights_Lots
-5. Condo
-6. Condo_Units
-7. CONDO_LABEL
-8. Conversion_Exceptions
-9. Conversion_Log (empty)
-10. DAB_ACTION_DEFINITION
-11. DAB_AIR_RIGHTS
-12. DAB_AIR_RIGHTS_DEFINITION
-13. DAB_BOUNDARY_LINE
-14. DAB_CONDO_CONVERSION
-15. DAB_CONDO_UNITS
-16. DAB_DOMAINS
-17. DAB_REUC
-18. DAB_SUBTERRANEAN_RIGHTS
-19. DAB_TAX_LOTS
-20. DAB_WIZARD_TRANSACTION
-21. DTM_USER_MAINT
-22. DTM_WORK_IN_PROGRESS
-23. FINAL_ASMT
-24. GWC_CUSTOM
-25. HAB
-26. MAP_INSET_LIBRARY
-27. MAP_LIBRARY
-28. REUC_Lots
-29. SUB_LABEL
-30. Subterranean_Lots
+Tables with mixed-case names are geodatabase-registerd and versioned on the legacy source database. The wizards appear to edit some tables directly without using the geodatabase.  After importing these tables will be registered on the target database but only those indicated will be versioned.
+
+|  | Name | Registered | Versioned |
+| ---- | ---- | ---- | ---- |
+| 1. | AIR_LABEL | N | N |
+| 2. | Air_Rights_Condos | Y | Y |
+| 3. | Air_Rights_Holders | Y | Y |
+| 4. | Air_Rights_Lots | Y | Y |
+| 5. | Condo | Y | Y |
+| 6. | CONDO_LABEL | N | N |
+| 7. | Condo_Units | Y | Y |
+| 8. | Conversion_Exceptions | Y | Y |
+| 9. | Conversion_Log (empty) | Y | Y |
+| 10. | DAB_ACTION_DEFINITION | N | N |
+| 11. | DAB_AIR_RIGHTS | N | N |
+| 12. | DAB_AIR_RIGHTS_DEFINITION | N | N |
+| 13. | DAB_BOUNDARY_LINE | N | N |
+| 14. | DAB_CONDO_CONVERSION | N | N |
+| 15. | DAB_CONDO_UNITS | N | N |
+| 16. | DAB_DOMAINS | N | N |
+| 17. | DAB_REUC | N | N |
+| 18. | DAB_SUBTERRANEAN_RIGHTS | N | N |
+| 19. | DAB_TAX_LOTS | N | N |
+| 20. | DAB_WIZARD_TRANSACTION | N | N |
+| 21. | DTM_USER_MAINT | N | N |
+| 22. | DTM_WORK_IN_PROGRESS | N | N |
+| 23. | FINAL_ASMT | N | N |
+| 24. | GWC_CUSTOM | N | N |
+| 25. | HAB | N | N |
+| 26. | MAP_INSET_LIBRARY | N | N |
+| 27. | MAP_LIBRARY | N | N |
+| 28. | REUC_Lots | Y | Y |
+| 29. | SUB_LABEL | N | N |
+| 30. | Subterranean_Lots | Y | Y |
+
 
 ### Views
 
