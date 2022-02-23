@@ -117,9 +117,9 @@ Use caution if examining views on the source environments.  One view (condo_unit
 
 ### Relationship Classes
 
-One relationship class lives under the Cadastral feature dataset, so we should see 12 total. See above.
+One relationship class lives under the Cadastral feature dataset, see above.  We will create 12 relationship classes. 
 
-Relationship classes listed in resources\relationshipclasses will be deleted (11 listed, the other goes with Cadastral deletion).  Creation requires individual calls in sample_import.bat to createrelationshipclass.py.  Not great I know.
+Relationship classes listed in resources\relationshipclasses will be deleted.  11 are listed, the 12th relationship class accompanies the Cadastral feature dataset deletion.  Relationship class creation requires 12 individual calls in sample_import.bat to createrelationshipclass.py.  The organization here is meh, I know.
 
 1. Air_Rights_Lots_Holders_Relationship
 2. Condo_Air_Rights_Relationship
