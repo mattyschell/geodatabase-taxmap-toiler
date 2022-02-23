@@ -35,5 +35,8 @@ if __name__ == "__main__":
         target.copy(os.path.join(srcsde
                                 ,name))
 
+        logger.info('completed importing {0} at {1}'.format(name
+                                                           ,datetime.datetime.now()))
+
     logger.info('completed importing {0} at {1}'.format(listname
                                                        ,datetime.datetime.now()))

@@ -76,36 +76,38 @@ Mixed case ESRI feature classes exist where indicated.
 
 ### Tables: Editable
 
-* AIR_LABEL
-* Air_Rights_Condos
-* Air_Rights_Holders
-* Air_Rights_Lots
-* Condo
-* Condo_Units
-* CONDO_LABEL
-* Conversion_Exceptions
-* Conversion_Log (empty)
-* DAB_ACTION_DEFINITION
-* DAB_AIR_RIGHTS
-* DAB_AIR_RIGHTS_DEFINITION
-* DAB_BOUNDARY_LINE
-* DAB_CONDO_CONVERSION
-* DAB_CONDO_UNITS
-* DAB_DOMAINS
-* DAB_REUC
-* DAB_SUBTERRANEAN_RIGHTS
-* DAB_TAX_LOTS
-* DAB_WIZARD_TRANSACTION
-* DTM_USER_MAINT
-* DTM_WORK_IN_PROGRESS
-* FINAL_ASMT
-* GWC_CUSTOM
-* HAB
-* MAP_INSET_LIBRARY
-* MAP_LIBRARY
-* REUC_Lots
-* SUB_LABEL
-* Subterranean_Lots
+Some of these tables store Portable Document Formatted maps as Binary Large Objects and are large.  To keep the migration process simple we migrate them with arcpy but this is not ideal. 
+
+1. AIR_LABEL
+2. Air_Rights_Condos
+3. Air_Rights_Holders
+4. Air_Rights_Lots
+5. Condo
+6. Condo_Units
+7. CONDO_LABEL
+8. Conversion_Exceptions
+9. Conversion_Log (empty)
+10. DAB_ACTION_DEFINITION
+11. DAB_AIR_RIGHTS
+12. DAB_AIR_RIGHTS_DEFINITION
+13. DAB_BOUNDARY_LINE
+14. DAB_CONDO_CONVERSION
+15. DAB_CONDO_UNITS
+16. DAB_DOMAINS
+17. DAB_REUC
+18. DAB_SUBTERRANEAN_RIGHTS
+19. DAB_TAX_LOTS
+20. DAB_WIZARD_TRANSACTION
+21. DTM_USER_MAINT
+22. DTM_WORK_IN_PROGRESS
+23. FINAL_ASMT
+24. GWC_CUSTOM
+25. HAB
+26. MAP_INSET_LIBRARY
+27. MAP_LIBRARY
+28. REUC_Lots
+29. SUB_LABEL
+30. Subterranean_Lots
 
 ### Views
 
@@ -115,33 +117,41 @@ Use caution if examining views on the source environments.  One view (condo_unit
 
 ### Relationship Classes
 
-* Air_Rights_Lots_Holders_Relationship
-* Condo_Air_Rights_Relationship
-* Condo_Condo_Unit_Relationship
-* Tax_Lot_Air_Rights_Holders_Relationship
-* Tax_Lot_Air_Rights_Relationship
-* Tax_Lot_REUC_Relationship
-* Tax_Lot_Subterranean_Relationship
+One relationship class lives under the Cadastral feature dataset, so we should see 12 total. See above.
+
+Relationship classes listed in resources\relationshipclasses will be deleted (11 listed, the other goes with Cadastral deletion).  Creation requires individual calls in sample_import.bat to createrelationshipclass.py.  Not great I know.
+
+1. Air_Rights_Lots_Holders_Relationship
+2. Condo_Air_Rights_Relationship
+3. Condo_Condo_Unit_Relationship
+4. Tax_Lot_Air_Rights_Holders_Relationship
+5. Tax_Lot_Air_Rights_Relationship
+6. Tax_Lot_Condo_Relationship
+7. Tax_Lot_Condo_Unit_Relationship
+8. Tax_Lot_Conversion_Exceptions_Relationship
+9. Tax_Lot_Conversion_Log_Relationship
+10. Tax_Lot_REUC_Relationship
+11. Tax_Lot_Subterranean_Relationship
 
 ### Spatial Data: Reference 
 
-* "DCP" feature dataset
+1. "DCP" feature dataset
     * Boro_Boundary
     * Community_Districts
     * Non_Tax_Block_polygon
     * Non_Tax_Lot_Polygon
     * Shoreline_Polygon
-* BOROUGH_POINT
-* BUILDING
-* CSCL_CENTERLINE
-* HYDRO
-* HYDRO_SDE (duplicate?)
-* LAND
-* LION_SUBSET_SDE
-* OPEN_SPACE_SDE
-* SHORELINE
-* TRANSPORTATION_LINE_SDE
-* TRANSPORTATION_STRUCTURE
+2. BOROUGH_POINT
+3. BUILDING
+4. CSCL_CENTERLINE
+5. HYDRO
+6. HYDRO_SDE (duplicate?)
+7. LAND
+8. LION_SUBSET_SDE
+9. OPEN_SPACE_SDE
+10. SHORELINE
+11. TRANSPORTATION_LINE_SDE
+12. TRANSPORTATION_STRUCTURE
 
 
 ## ESRI Workflow Manager
