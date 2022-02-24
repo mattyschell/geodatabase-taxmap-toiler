@@ -70,6 +70,27 @@ class Importmanager(object):
 
         self.targetfc.version()
 
+    def grant(self
+             ,esripriv
+             ,esriuser):
+
+        # I have made the ESRI changeprivilegesmanagement
+        # nobs and dials even more confusing!  
+
+        if esripriv == 'VIEW':
+
+            self.targetfc.grantprivileges(esriuser
+                                         ,'AS_IS') 
+
+        elif esripriv == 'EDIT':
+
+            self.targetfc.grantprivileges(esriuser
+                                         ,'GRANT')
+
+        else:
+
+            raise ValueError('oops whats {1}'.format(esripriv))
+
     def qa(self
           ,sourcefc):
 

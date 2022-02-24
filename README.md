@@ -36,16 +36,32 @@ Edit the inventories under src/resources.
 ## Schema Inventory
 
 * DOF_EDITOR
-    * Will be empty unless ESRI writes out keyset and log tables
+    * Granted the DOF_TAXMAP_EDITOR role
+    * Empty except for ESRI keyset and log tables
 * DOF_TAXMAP 
-    * See Data Inventory below
+    * See "DOF_TAXMAP Data Inventory" section below
 * JTX_ADMIN 
     * 5 GB, migration TBD
+* MAP_VIEWER
+    * Grant select on everything in the data inventory
+    * Unknown how this is actually used
 
 ## Role Inventory
 
 * DOF_TAXMAP_EDITOR
-* TAXMAP_VIEWER
+    * Granted to DOF_EDITOR
+
+## Extraneous Schema/Role Inventory: Ignore For Now
+
+These appear to be convenience cruft that are not part of the
+required application setup.
+
+* Schemas
+    1. DOF_READONLY
+* Roles
+    1. DOITT_DTM_VIEWER
+    2. TAXMAP_VIEWER
+
 
 ## Versions
 
@@ -55,7 +71,7 @@ This repository will not create versions. For reference:
     * DOF_PRODUCTION
         * DOF_EDITOR.*
 
-## Data Inventory
+## DOF_TAXMAP Data Inventory
 
 Mixed case ESRI feature classes exist where indicated.
 
@@ -82,7 +98,7 @@ Registered as versioned and is edited.
 
 Some of these tables store Portable Document Formatted maps as Binary Large Objects and are large.  To keep the migration process simple we migrate them with arcpy but this is not ideal. 
 
-Tables with mixed-case names are geodatabase-registerd and versioned on the legacy source database. The wizards appear to edit some tables directly without using the geodatabase.  After importing these tables will be registered on the target database but only those indicated will be versioned.
+Tables with mixed-case names are geodatabase-registered and versioned on the legacy source database. The wizards appear to edit some tables directly without using the geodatabase.  After importing these tables they will be registered on the target Geodatabase but only those indicated Versioned=Y below will be versioned.
 
 |  | Name | Registered | Versioned |
 | ---- | ---- | ---- | ---- |
@@ -143,6 +159,8 @@ Relationship classes listed in resources\relationshipclasses will be deleted.  1
 11. Tax_Lot_Subterranean_Relationship
 
 ### Spatial Data: Reference 
+
+We will ignore reference data.   But for reference here's a list.
 
 1. "DCP" feature dataset
     * Boro_Boundary
