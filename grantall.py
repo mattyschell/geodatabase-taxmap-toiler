@@ -38,8 +38,11 @@ if __name__ == "__main__":
         target.grant(esripriv
                     ,esriuser)
 
-        logger.info('completed versioning {0} at {1}'.format(name
-                                                            ,datetime.datetime.now()))
+        logger.info('completed granting {0} on {1} to {2} at {3}'.format(esripriv
+                                                                        ,name
+                                                                        ,esriuser
+                                                                        ,datetime.datetime.now()))
 
-    logger.info('completed versioning {0} at {1}'.format(listname
-                                                        ,datetime.datetime.now()))
+    logger.info('completed {0} grants on {1} at {2}'.format(esripriv
+                                                           ,listname
+                                                           ,datetime.datetime.now()))

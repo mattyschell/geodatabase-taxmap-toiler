@@ -26,4 +26,13 @@ CALL %PROPY% createrelationshipclass.py "Tax_Lot_Polygon" "Conversion_Log" "Tax_
 CALL %PROPY% createrelationshipclass.py "Tax_Lot_Polygon" "REUC_Lots" "Tax_Lot_REUC_Relationship" SIMPLE "REUC_Lots" "Tax_Lot_Polygon" NONE ONE_TO_MANY NONE BBL APPURTENANT_BBL
 CALL %PROPY% createrelationshipclass.py "Tax_Lot_Polygon" "Subterranean_Lots" "Tax_Lot_Subterranean_Relationship" SIMPLE "Subterranean_Lots" "Tax_Lot_Polygon" NONE ONE_TO_MANY NONE BBL APPURTENANT_BBL
 CALL %PROPY% versionall.py versionedtables
-CALL %PROPY% versionall.py versionedfeaturedatasets
+CALL %PROPY% versionall.py featuredatasets
+CALL %PROPY% grantall.py tables view MAP_VIEWER 
+CALL %PROPY% grantall.py featuredatasets view MAP_VIEWER 
+CALL %PROPY% grantall.py tables view MAP_VIEWER 
+REM DOF_TAXMAP_EDITOR role will not exist on POC database
+REM CALL %PROPY% grantall.py featuredatasets edit DOF_TAXMAP_EDITOR
+REM CALL %PROPY% grantall.py versionedtables edit DOF_TAXMAP_EDITOR
+REM grant direct to the editor as a workaround 
+CALL %PROPY% grantall.py featuredatasets edit DOF_EDITOR 
+CALL %PROPY% grantall.py versionedtables edit DOF_EDITOR

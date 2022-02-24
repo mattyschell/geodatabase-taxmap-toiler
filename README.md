@@ -36,20 +36,21 @@ Edit the inventories under src/resources.
 ## Schema Inventory
 
 * DOF_EDITOR
-    * Granted the DOF_TAXMAP_EDITOR role
-    * Empty except for ESRI keyset and log tables
+    * Has the DOF_TAXMAP_EDITOR role
+    * Empty except for ESRI keyset and log detritus
 * DOF_TAXMAP 
     * See "DOF_TAXMAP Data Inventory" section below
 * JTX_ADMIN 
     * 5 GB, migration TBD
 * MAP_VIEWER
-    * Grant select on everything in the data inventory
+    * We grant select on everything in the data inventory
     * Unknown how this is actually used
 
 ## Role Inventory
 
 * DOF_TAXMAP_EDITOR
     * Granted to DOF_EDITOR
+    * We will ignore this role for the proof of concept test
 
 ## Extraneous Schema/Role Inventory: Ignore For Now
 
