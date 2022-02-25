@@ -19,7 +19,7 @@ if __name__ == "__main__":
     # src/resources/Cadastral
     # create Cadastral feature dataset
     # then import Cadastral contents
-    namestoimport = importer.Importlistmanager(fdname)
+    names = importer.Importlistmanager(fdname)
     
     targetgdb = gdb.Gdb()
     featuredataset = "{0}/{1}".format(targetgdb.sdeconn,fdname)
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     # hack feature dataset name onto the the target "Output location"
     targetgdb.sdeconn = featuredataset
 
-    for name in namestoimport.names:
+    for name in names.names:
 
         logger.info('importing {0} at {1}'.format(name
                                                  ,datetime.datetime.now()))        

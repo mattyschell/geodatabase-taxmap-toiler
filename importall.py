@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     # for example
     # src/resources/featureclasses
-    namestoimport = importer.Importlistmanager(listname)
+    names = importer.Importlistmanager(listname)
     
     targetsdeconn = os.environ['SDEFILE']
     targetgdb = gdb.Gdb()
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
-    for name in namestoimport.names:
+    for name in names.names:
 
         logger.info('importing {0} at {1}'.format(name
                                                  ,datetime.datetime.now()))

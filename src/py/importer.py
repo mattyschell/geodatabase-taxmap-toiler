@@ -2,6 +2,7 @@ import sys
 import os
 import logging
 import arcpy
+import pathlib
 
 # SET PYTHONPATH=C:\XX\geodatabase-toiler\src\py
 import gdb
@@ -19,7 +20,23 @@ class Importlistmanager(object):
 
             contents = [line.strip() for line in l]
 
-        self.names = contents       
+        self.names = contents    
+
+
+class Importsqlmanager(object):
+
+    def __init__(self
+                ,whichsql
+                ,whichdatabase='oracle'):
+
+        sqlfilepath = pathlib.Path(__file__).parent.parent \
+                                            .joinpath('sql_{0}'.format(whichdatabase)) \
+                                            .joinpath(whichsql)
+        
+        with open(sqlfilepath, 'r') as sqlfile:
+            sql = sqlfile.read() 
+
+        self.sql = sql   
 
 
 class Importmanager(object):

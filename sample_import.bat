@@ -14,6 +14,7 @@ CALL %PROPY% importall.py featureclasses %SRCSDE%
 CALL %PROPY% importall.py tables %SRCSDE%
 CALL %PROPY% buildpossessionhooktopology.py Cadastral
 CALL %PROPY% buildtaxlottopology.py Cadastral
+CALL %PROPY% decurvifyall.py Cadastral
 CALL %PROPY% createrelationshipclass.py "Air_Rights_Lots" "Air_Rights_Holders" "Air_Rights_Lots_Holders_Relationship" SIMPLE "Air_Rights_Holders" "Air_Rights_Lots" NONE ONE_TO_MANY NONE AIR_RIGHTS_BBL AIR_RIGHTS_BBL  
 CALL %PROPY% createrelationshipclass.py "Cadastral/Tax_Lot_Polygon" "Cadastral/Tax_Lot_Face" "Cadastral/Polygon_Face_Relationship" COMPOSITE "FINAL.Tax_Lot_Face" "FINAL.TAX_LOT_POLYGON" FORWARD ONE_TO_MANY NONE BBL BBL  
 CALL %PROPY% createrelationshipclass.py "Condo" "Air_Rights_Condos" "Condo_Air_Rights_Relationship" SIMPLE "Air_Rights_Condos" "Condo" NONE ONE_TO_MANY NONE CONDO_BASE_BBL_KEY CONDO_BASE_BBL_KEY  

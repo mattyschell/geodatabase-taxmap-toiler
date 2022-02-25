@@ -14,14 +14,14 @@ if __name__ == "__main__":
 
     # for example
     # src/resources/featureclasses
-    namestodelete = importer.Importlistmanager(listname)
+    names = importer.Importlistmanager(listname)
     
     targetgdb = gdb.Gdb()
 
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
-    for name in namestodelete.names:
+    for name in names.names:
 
         logger.info('deleting {0}'.format(name))
 

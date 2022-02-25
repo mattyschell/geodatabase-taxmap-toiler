@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     # for example
     # src/resources/tables
-    namestogrant = importer.Importlistmanager(listname)
+    names = importer.Importlistmanager(listname)
     
     targetsdeconn = os.environ['SDEFILE']
     targetgdb = gdb.Gdb()
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
-    for name in namestogrant.names:
+    for name in names.names:
 
         logger.info('granting {0} on {1} to {2} at {3}'.format(esripriv
                                                               ,name
