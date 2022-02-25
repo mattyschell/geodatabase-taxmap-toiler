@@ -91,6 +91,18 @@ class Importmanager(object):
 
             raise ValueError('oops whats {1}'.format(esripriv))
 
+    def analyze(self
+               ,esricomponent):
+
+        if esricomponent.upper() == 'BUSINESS':
+
+            return self.targetfc.analyze(['BUSINESS'])
+
+        else:
+
+            # ['BUSINESS','ADDS','DELETES']
+            return self.targetfc.analyze()
+
     def qa(self
           ,sourcefc):
 

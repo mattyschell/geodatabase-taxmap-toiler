@@ -9,6 +9,7 @@ CALL %PROPY% deleteall.py relationshipclasses
 CALL %PROPY% deleteall.py featureclasses
 CALL %PROPY% deleteall.py tables
 CALL %PROPY% importfeaturedataset.py Cadastral %SRCSDE%
+REM featureclasses are all reference data? ignore most for now
 CALL %PROPY% importall.py featureclasses %SRCSDE%
 CALL %PROPY% importall.py tables %SRCSDE%
 CALL %PROPY% buildpossessionhooktopology.py Cadastral
@@ -36,3 +37,6 @@ REM CALL %PROPY% grantall.py versionedtables edit DOF_TAXMAP_EDITOR
 REM grant direct to the editor as a workaround 
 CALL %PROPY% grantall.py featuredatasets edit DOF_EDITOR 
 CALL %PROPY% grantall.py versionedtables edit DOF_EDITOR
+CALL %PROPY% analyzeall.py tables business
+CALL %PROPY% analyzeall.py versionedtables delta
+CALL %PROPY% analyzeall.py Cadastral delta
