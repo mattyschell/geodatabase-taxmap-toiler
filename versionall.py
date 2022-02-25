@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     # for example
     # src/resources/featureclasses
-    namestoversion = importer.Importlistmanager(listname)
+    names = importer.Importlistmanager(listname)
     
     targetsdeconn = os.environ['SDEFILE']
     targetgdb = gdb.Gdb()
@@ -23,7 +23,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
-    for name in namestoversion.names:
+    for name in names.names:
 
         logger.info('versioning {0} at {1}'.format(name
                                                   ,datetime.datetime.now()))
