@@ -153,3 +153,4 @@ scratch/
 
 # dont commit actual batch scripts, ex migrate_stg2dev.bat
 migrate_*.bat
+*2dev.bat

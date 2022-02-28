@@ -42,3 +42,4 @@ CALL %PROPY% analyzeall.py tables business
 CALL %PROPY% analyzeall.py versionedtables delta
 CALL %PROPY% analyzeall.py Cadastral delta
 CALL src\py\resources\createversionedviews.bat
+CALL %PROPY% qaall.py listoflists

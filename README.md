@@ -15,7 +15,7 @@ Basic stuff here. Requires a scratch Oracle database schema.
 
 ```bat
 > set SDEFILE=X:\yyy\zzz.sde
-> set PYTHONPATH=X:\geodatabase-toiler\src\py;%PYTHONPATH%
+> set PYTHONPATH=C:\gis\geodatabase-toiler\src\py;C:\gis\geodatabase-taxmap-toiler\src\py;%PYTHONPATH%
 > testall.bat
 ```
 
