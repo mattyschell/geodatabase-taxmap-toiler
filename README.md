@@ -159,9 +159,10 @@ Relationship classes listed in resources\relationshipclasses will be deleted.  1
 10. Tax_Lot_REUC_Relationship
 11. Tax_Lot_Subterranean_Relationship
 
-### Spatial Data: Reference 
+### Spatial Data: Reference Used by the Wizards
 
-We will ignore reference data.   But for reference here's a list.
+Best to include these, the Wizards expect them even if they are not edited or explicitly read.  
+
 
 1. "DCP" feature dataset
     * Boro_Boundary
@@ -169,22 +170,26 @@ We will ignore reference data.   But for reference here's a list.
     * Non_Tax_Block_polygon
     * Non_Tax_Lot_Polygon
     * Shoreline_Polygon
-2. BOROUGH_POINT
-3. BUILDING
-4. CSCL_CENTERLINE
-5. HYDRO
-6. HYDRO_SDE (duplicate?)
-7. LAND
-8. LION_SUBSET_SDE
-9. OPEN_SPACE_SDE
-10. SHORELINE
-11. TRANSPORTATION_LINE_SDE
-12. TRANSPORTATION_STRUCTURE
+2. LION_SUBSET_SDE
+3. TRANSPORTATION_LINE_SDE
+4. BUILDING
+5. OPEN_SPACE_SDE
+6. HYDRO_SDE 
 
+### Spatial Data: Not Required Reference 
+
+We will ignore other reference data.   But for reference here's a list.
+
+1. BOROUGH_POINT
+2. CSCL_CENTERLINE
+3. HYDRO
+4. LAND
+5. SHORELINE
+6. TRANSPORTATION_STRUCTURE
 
 ## ESRI Workflow Manager
 
-Workflow manager data is in the JTX schema.
+Workflow manager data is in the JTX_ADMIN schema.
 
 * JTX_ACTIVITY_TYPES
 * JTX_AUX_PROPS

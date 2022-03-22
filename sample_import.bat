@@ -8,16 +8,19 @@ set TOILER=C:\gis\geodatabase-toiler\
 set PY27=C:\Python27\ArcGIS10.6\python.exe
 set PROPY=c:\Progra~1\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe
 CALL %PROPY% %TAXTOILREPO%deletefeaturedataset.py Cadastral
+CALL %PROPY% %TAXTOILREPO%deletefeaturedataset.py DCP
 CALL %PROPY% %TAXTOILREPO%deleteall.py relationshipclasses
 CALL %PROPY% %TAXTOILREPO%deleteall.py featureclasses
 CALL %PROPY% %TAXTOILREPO%deleteall.py tables
 CALL %PROPY% %TAXTOILREPO%importfeaturedataset.py Cadastral %SRCSDE%
+CALL %PROPY% %TAXTOILREPO%importfeaturedataset.py DCP %SRCSDE%
 REM featureclasses are all reference data? ignore most for now
 CALL %PROPY% %TAXTOILREPO%importall.py featureclasses %SRCSDE%
 CALL %PROPY% %TAXTOILREPO%importall.py tables %SRCSDE%
 CALL %PROPY% %TAXTOILREPO%buildpossessionhooktopology.py Cadastral
 CALL %PROPY% %TAXTOILREPO%buildtaxlottopology.py Cadastral
 CALL %PROPY% %TAXTOILREPO%decurvifyall.py Cadastral
+CALL %PROPY% %TAXTOILREPO%decurvifyall.py DCP
 CALL %PROPY% %TAXTOILREPO%createrelationshipclass.py "Air_Rights_Lots" "Air_Rights_Holders" "Air_Rights_Lots_Holders_Relationship" SIMPLE "Air_Rights_Holders" "Air_Rights_Lots" NONE ONE_TO_MANY NONE AIR_RIGHTS_BBL AIR_RIGHTS_BBL  
 CALL %PROPY% %TAXTOILREPO%createrelationshipclass.py "Cadastral/Tax_Lot_Polygon" "Cadastral/Tax_Lot_Face" "Cadastral/Polygon_Face_Relationship" COMPOSITE "FINAL.Tax_Lot_Face" "FINAL.TAX_LOT_POLYGON" FORWARD ONE_TO_MANY NONE BBL BBL  
 CALL %PROPY% %TAXTOILREPO%createrelationshipclass.py "Condo" "Air_Rights_Condos" "Condo_Air_Rights_Relationship" SIMPLE "Air_Rights_Condos" "Condo" NONE ONE_TO_MANY NONE CONDO_BASE_BBL_KEY CONDO_BASE_BBL_KEY  
@@ -31,7 +34,7 @@ CALL %PROPY% %TAXTOILREPO%createrelationshipclass.py "Tax_Lot_Polygon" "Conversi
 CALL %PROPY% %TAXTOILREPO%createrelationshipclass.py "Tax_Lot_Polygon" "REUC_Lots" "Tax_Lot_REUC_Relationship" SIMPLE "REUC_Lots" "Tax_Lot_Polygon" NONE ONE_TO_MANY NONE BBL APPURTENANT_BBL
 CALL %PROPY% %TAXTOILREPO%createrelationshipclass.py "Tax_Lot_Polygon" "Subterranean_Lots" "Tax_Lot_Subterranean_Relationship" SIMPLE "Subterranean_Lots" "Tax_Lot_Polygon" NONE ONE_TO_MANY NONE BBL APPURTENANT_BBL
 CALL %PROPY% %TAXTOILREPO%versionall.py versionedtables
-CALL %PROPY% %TAXTOILREPO%versionall.py featuredatasets
+CALL %PROPY% %TAXTOILREPO%versionall.py versionedfeaturedatasets
 CALL %PROPY% %TAXTOILREPO%grantall.py tables view MAP_VIEWER 
 CALL %PROPY% %TAXTOILREPO%grantall.py featuredatasets view MAP_VIEWER 
 CALL %PROPY% %TAXTOILREPO%grantall.py tables view MAP_VIEWER 
