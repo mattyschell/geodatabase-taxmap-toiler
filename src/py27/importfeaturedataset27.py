@@ -24,14 +24,12 @@ if __name__ == "__main__":
     
     featuredataset = "{0}/{1}".format(targetsdeconn,fdname)
 
-    print 'creating feature dataset {0} at {1}'.format(fdname,datetime.datetime.now()))
+    print 'creating feature dataset {0} at {1}'.format(fdname,datetime.datetime.now())
 
 
     arcpy.CreateFeatureDataset_management(targetsdeconn
                                          ,fdname
                                          ,os.path.join(os.path.dirname(__file__)
-                                                      ,'src'
-                                                      ,'py'
                                                       ,'resources'
                                                       ,'epsg_2263.prj'))
 
@@ -40,7 +38,7 @@ if __name__ == "__main__":
 
     for name in names.names:
 
-        print 'importing {0} at {1}'.format(name,datetime.datetime.now()))        
+        print 'importing {0} at {1}'.format(name,datetime.datetime.now())        
         
         target = importer27.Importmanager(targetgdb_sdeconn
                                          ,name)
@@ -50,8 +48,8 @@ if __name__ == "__main__":
                                                      ,fdname
                                                      ,name)))
        
-        print 'completed importing {0} at {1}'.format(name,datetime.datetime.now()))        
+        print 'completed importing {0} at {1}'.format(name,datetime.datetime.now())       
         
-    print 'completed importing {0} at {1}'.format(fdname,datetime.datetime.now()))
+    print 'completed importing {0} at {1}'.format(fdname,datetime.datetime.now())
     
     
