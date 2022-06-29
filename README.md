@@ -170,7 +170,8 @@ Best to include these, the Wizards expect them even if they are not edited or ex
     * Non_Tax_Block_polygon
     * Non_Tax_Lot_Polygon
     * Shoreline_Polygon
-2. LION_SUBSET_SDE
+2. LION_SUBSET_SDE 
+    * Turn off labels if possible.  See closed issue #12
 3. TRANSPORTATION_LINE_SDE
 4. BUILDING
 5. OPEN_SPACE_SDE
