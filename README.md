@@ -95,45 +95,21 @@ Registered as versioned and is edited.
         * Possession_Hook_Topology
         * Tax_Lot_Topology
 
-### Tables
+### Tables: Registered
 
-Some of these tables store Portable Document Formatted maps as Binary Large Objects and are large.  To keep the migration process simple we migrate them with arcpy but this is not ideal. 
-
-Tables with mixed-case names are geodatabase-registered and versioned on the legacy source database. The wizards appear to edit some tables directly without using the geodatabase.  After importing these tables they will be registered on the target Geodatabase but only those indicated Versioned=Y below will be versioned.
+Tables with mixed-case names are geodatabase-registered and versioned on the legacy source database. The wizards also edit some tables directly without the tables being registered with the geodatabase. These unregistered tables should not be migrated with arcpy.
 
 |  | Name | Registered | Versioned |
 | ---- | ---- | ---- | ---- |
-| 1. | AIR_LABEL | N | N |
-| 2. | Air_Rights_Condos | Y | Y |
-| 3. | Air_Rights_Holders | Y | Y |
-| 4. | Air_Rights_Lots | Y | Y |
-| 5. | Condo | Y | Y |
-| 6. | CONDO_LABEL | N | N |
-| 7. | Condo_Units | Y | Y |
-| 8. | Conversion_Exceptions | Y | Y |
-| 9. | Conversion_Log (empty) | Y | Y |
-| 10. | DAB_ACTION_DEFINITION | N | N |
-| 11. | DAB_AIR_RIGHTS | N | N |
-| 12. | DAB_AIR_RIGHTS_DEFINITION | N | N |
-| 13. | DAB_BOUNDARY_LINE | N | N |
-| 14. | DAB_CONDO_CONVERSION | N | N |
-| 15. | DAB_CONDO_UNITS | N | N |
-| 16. | DAB_DOMAINS | N | N |
-| 17. | DAB_REUC | N | N |
-| 18. | DAB_SUBTERRANEAN_RIGHTS | N | N |
-| 19. | DAB_TAX_LOTS | N | N |
-| 20. | DAB_WIZARD_TRANSACTION | N | N |
-| 21. | DTM_USER_MAINT | N | N |
-| 22. | DTM_WORK_IN_PROGRESS | N | N |
-| 23. | FINAL_ASMT | N | N |
-| 24. | GWC_CUSTOM | N | N |
-| 25. | HAB | N | N |
-| 26. | MAP_INSET_LIBRARY | N | N |
-| 27. | MAP_LIBRARY | N | N |
-| 28. | REUC_Lots | Y | Y |
-| 29. | SUB_LABEL | N | N |
-| 30. | Subterranean_Lots | Y | Y |
-
+| 1. | Air_Rights_Condos | Y | Y |
+| 2. | Air_Rights_Holders | Y | Y |
+| 3. | Air_Rights_Lots | Y | Y |
+| 4. | Condo | Y | Y |
+| 5. | Condo_Units | Y | Y |
+| 6. | Conversion_Exceptions | Y | Y |
+| 7. | Conversion_Log (empty) | Y | Y |
+| 8. | REUC_Lots | Y | Y |
+| 9. | Subterranean_Lots | Y | Y |
 
 ### Views
 
@@ -177,9 +153,40 @@ Best to include these, the Wizards expect them even if they are not edited or ex
 5. OPEN_SPACE_SDE
 6. HYDRO_SDE 
 
+### Tables: Do Not Participate in Geodatabase
+
+Some of these tables store Portable Document Formatted maps as Binary Large Objects and are large.  Using arcpy to migrate this is inappropriate because added geodatabase-managed columns and column type migrations will blow up the wizards.
+
+Migrate with: TBD
+
+|  | Name | Registered | Versioned |
+| ---- | ---- | ---- | ---- |
+| 1. | AIR_LABEL | N | N |
+| 2. | CONDO_LABEL | N | N |
+| 3. | DAB_ACTION_DEFINITION | N | N |
+| 4. | DAB_AIR_RIGHTS | N | N |
+| 5. | DAB_AIR_RIGHTS_DEFINITION | N | N |
+| 6. | DAB_BOUNDARY_LINE | N | N |
+| 7. | DAB_CONDO_CONVERSION | N | N |
+| 8. | DAB_CONDO_UNITS | N | N |
+| 9. | DAB_DOMAINS | N | N |
+| 10. | DAB_REUC | N | N |
+| 11. | DAB_SUBTERRANEAN_RIGHTS | N | N |
+| 12. | DAB_TAX_LOTS | N | N |
+| 13. | DAB_WIZARD_TRANSACTION | N | N |
+| 14. | DTM_USER_MAINT | N | N |
+| 15. | DTM_WORK_IN_PROGRESS | N | N |
+| 16. | FINAL_ASMT | N | N |
+| 17. | GWC_CUSTOM | N | N |
+| 18. | HAB | N | N |
+| 19. | MAP_INSET_LIBRARY | N | N |
+| 20. | MAP_LIBRARY | N | N |
+| 21. | SUB_LABEL | N | N |
+
+
 ### Spatial Data: Not Required Reference 
 
-We will ignore other reference data.   But for reference here's a list.
+We will ignore this reference data. But for reference here's a list.
 
 1. BOROUGH_POINT
 2. CSCL_CENTERLINE
@@ -260,5 +267,4 @@ Workflow manager data is in the JTX_ADMIN schema.
 * JTX_USER_GROUP_JOB_FILTERS
 * JTX_USER_GROUP_XREF
 * JTX_WORKFLOW_STORE
-
 
