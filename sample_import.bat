@@ -1,13 +1,22 @@
-REM SDEFILE env to target test location must be set
-set SDEFILE=C:\xxx\Yyyyyyyyyyy\zzzzzzzzz\aaa\bbb-bbbbbbbb\dof_taxmap.sde
-set PYTHON3PATH=C:\xxx\geodatabase-toiler\src\py;C:\xxx\geodatabase-taxmap-toiler\src\py
+REM Update basepath and source, destination SDE files
+set BASEPATH=A:\xxx
+set SRCSDE=%BASEPATH%\Connections\oracle11g\yyy\zzz_zzzzzz.sde
+set SDEFILE=%BASEPATH%\Connections\oracle19c\yyy\GEO-zzzZZzzz\aaa_aaaaaa.sde
+REM Next section is ancient oracle exp imp for non-gdb tables
+set ORACLE_PATH=C:\oracle\product\instantclient_19_5
+set SRCPASS=***************
+set DESTPASS=**************
+set SRCDB=xxxxxxx.xxxxx.xxxxxx
+set DESTDB=xxxxxxxx
+REM review the rest
+set PY27=C:\Python27\ArcGIS10.7\python.exe
+set TAXTOILREPO=%BASEPATH%\geodatabase-taxmap-toiler\
+set TOILER=%BASEPATH%\geodatabase-toiler\
+set PROPY=c:\Progra~1\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe
+set PYTHON3PATH=%BASEPATH%\geodatabase-toiler\src\py;%BASEPATH%\geodatabase-taxmap-toiler\src\py
 set PYTHON2PATH=%TAXTOILREPO%\src\py27
 set PYTHONPATH=%PYTHON3PATH%
-set SRCSDE=C:\xxx\Yyyyyyyyyyy\zzzzzzzzz\aaa\dof_taxmap.sde
-set TAXTOILREPO=C:\xxx\geodatabase-taxmap-toiler\
-set TOILER=C:\xxx\geodatabase-toiler\
-set PY27=C:\Python27\ArcGIS10.7\python.exe
-set PROPY=c:\Progra~1\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe
+REM migration starts here
 CALL %PROPY% %TAXTOILREPO%deletefeaturedataset.py Cadastral
 CALL %PROPY% %TAXTOILREPO%deletefeaturedataset.py DCP
 CALL %PROPY% %TAXTOILREPO%deleteall.py relationshipclasses
@@ -38,7 +47,6 @@ CALL %PROPY% %TAXTOILREPO%versionall.py versionedfeaturedatasets
 CALL %PROPY% %TAXTOILREPO%grantall.py tables view MAP_VIEWER 
 CALL %PROPY% %TAXTOILREPO%grantall.py featuredatasets view MAP_VIEWER 
 CALL %PROPY% %TAXTOILREPO%grantall.py tables view MAP_VIEWER 
-REM DOF_TAXMAP_EDITOR role should exist
 CALL %PROPY% %TAXTOILREPO%grantall.py versionedfeaturedatasets edit DOF_TAXMAP_EDITOR 
 CALL %PROPY% %TAXTOILREPO%grantall.py featuredatasets view DOF_TAXMAP_EDITOR
 CALL %PROPY% %TAXTOILREPO%grantall.py featureclasses view DOF_TAXMAP_EDITOR
@@ -47,4 +55,11 @@ CALL %PROPY% %TAXTOILREPO%analyzeall.py tables business
 CALL %PROPY% %TAXTOILREPO%analyzeall.py versionedtables delta
 CALL %PROPY% %TAXTOILREPO%analyzeall.py Cadastral delta
 CALL %TAXTOILREPO%src\py\resources\createversionedviews.bat
+set TABLES=DAB_ACTION_DEFINITION,DAB_AIR_RIGHTS,DAB_AIR_RIGHTS_DEFINITION,DAB_BOUNDARY_LINE,DAB_CONDO_CONVERSION,DAB_CONDO_UNITS,DAB_DOMAINS,DAB_REUC,DAB_SUBTERRANEAN_RIGHTS,DAB_TAX_LOTS,DAB_WIZARD_TRANSACTION,DTM_USER_MAINT,DTM_WORK_IN_PROGRESS,FINAL_ASMT
+REM set TABLES=HAB,MAP_INSET_LIBRARY,MAP_LIBRARY
+set EXPFILE=%TEMP%\dof_taxmap.dmp
+CALL %ORACLE_PATH%\exp.exe DOF_TAXMAP/%SRCPASS%@%SRCDB% FILE=%EXPFILE% TABLES=(%TABLES%)
+CALL %ORACLE_PATH%\sqlplus.exe DOF_TAXMAP/%DESTPASS%@%DESTDB% @%TAXTOILREPO%\src\sql_oracle\droptables.sql
+CALL %ORACLE_PATH%\imp.exe DOF_TAXMAP/%DESTPASS%@%DESTDB% FILE=%EXPFILE% TABLES=(%TABLES%) IGNORE=y
 CALL %PROPY% %TAXTOILREPO%qaall.py listoflists
+

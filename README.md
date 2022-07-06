@@ -161,32 +161,27 @@ Migrate with: TBD
 
 |  | Name | Registered | Versioned |
 | ---- | ---- | ---- | ---- |
-| 1. | AIR_LABEL | N | N |
-| 2. | CONDO_LABEL | N | N |
-| 3. | DAB_ACTION_DEFINITION | N | N |
-| 4. | DAB_AIR_RIGHTS | N | N |
-| 5. | DAB_AIR_RIGHTS_DEFINITION | N | N |
-| 6. | DAB_BOUNDARY_LINE | N | N |
-| 7. | DAB_CONDO_CONVERSION | N | N |
-| 8. | DAB_CONDO_UNITS | N | N |
-| 9. | DAB_DOMAINS | N | N |
-| 10. | DAB_REUC | N | N |
-| 11. | DAB_SUBTERRANEAN_RIGHTS | N | N |
-| 12. | DAB_TAX_LOTS | N | N |
-| 13. | DAB_WIZARD_TRANSACTION | N | N |
-| 14. | DTM_USER_MAINT | N | N |
-| 15. | DTM_WORK_IN_PROGRESS | N | N |
-| 16. | FINAL_ASMT | N | N |
-| 17. | GWC_CUSTOM | N | N |
-| 18. | HAB | N | N |
-| 19. | MAP_INSET_LIBRARY | N | N |
-| 20. | MAP_LIBRARY | N | N |
-| 21. | SUB_LABEL | N | N |
-
+| 1. | DAB_ACTION_DEFINITION | N | N |
+| 2. | DAB_AIR_RIGHTS | N | N |
+| 3. | DAB_AIR_RIGHTS_DEFINITION | N | N |
+| 4. | DAB_BOUNDARY_LINE | N | N |
+| 5. | DAB_CONDO_CONVERSION | N | N |
+| 6. | DAB_CONDO_UNITS | N | N |
+| 7. | DAB_DOMAINS | N | N |
+| 8. | DAB_REUC | N | N |
+| 9. | DAB_SUBTERRANEAN_RIGHTS | N | N |
+| 10. | DAB_TAX_LOTS | N | N |
+| 11. | DAB_WIZARD_TRANSACTION | N | N |
+| 12. | DTM_USER_MAINT | N | N |
+| 13. | DTM_WORK_IN_PROGRESS | N | N |
+| 14. | FINAL_ASMT | N | N |
+| 15. | HAB | N | N |
+| 16. | MAP_INSET_LIBRARY | N | N |
+| 17. | MAP_LIBRARY | N | N |
 
 ### Spatial Data: Not Required Reference 
 
-We will ignore this reference data. But for reference here's a list.
+We will ignore this reference data. But for reference here is a list.
 
 1. BOROUGH_POINT
 2. CSCL_CENTERLINE
