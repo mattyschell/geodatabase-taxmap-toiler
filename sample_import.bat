@@ -65,5 +65,6 @@ CALL %ORACLE_PATH%\sqlplus.exe DOF_TAXMAP/%DESTPASS%@%DESTDB% @%TAXTOILREPO%src\
 CALL %PROPY% %TAXTOILREPO%deleteall.py cleantables
 CALL %ORACLE_PATH%\sqlplus.exe DOF_TAXMAP/%DESTPASS%@%DESTDB% @%TAXTOILREPO%src\sql_oracle\cleantables2.sql
 CALL %ORACLE_PATH%\sqlplus.exe DOF_TAXMAP/%DESTPASS%@%DESTDB% @%TAXTOILREPO%src\sql_oracle\grantdatabasetables.sql
+CALL %ORACLE_PATH%\sqlplus.exe DOF_TAXMAP/%DESTPASS%@%DESTDB% @%TAXTOILREPO%src\sql_oracle\dab_transaction_sequence.sql
 CALL %PROPY% %TAXTOILREPO%qaall.py listoflists
 
