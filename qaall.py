@@ -16,9 +16,20 @@ def removeschema(dbobjectlist):
 
     return cleandblist
 
-# TODO
-# def get_relationshipclasses():
-# 
+
+def get_relationshipclasses(workspace):
+
+    # no desire to add relationship class management to geodatabase-toiler
+
+    relclasses = []
+    walk = arcpy.da.Walk(workspace
+                        ,datatype="RelationshipClass")
+
+    for dirpath, dirnames, filenames in walk:
+        for relationshipclass in filenames:
+            relclasses.append(relationshipclass)
+
+    return removeschema(relclasses)
 
 def get_tables():
 
@@ -26,7 +37,7 @@ def get_tables():
 
 def get_feature_datasets():
     
-   return  removeschema(arcpy.ListDatasets())
+   return removeschema(arcpy.ListDatasets())
 
 def get_feature_classes():
 
@@ -41,11 +52,13 @@ def get_feature_classes():
 
     return removeschema(feature_classes)
 
-def getallobjects():
+
+def getallobjects(workspace):
 
     return get_tables() \
          + get_feature_datasets() \
-         + get_feature_classes()
+         + get_feature_classes() \
+         + get_relationshipclasses(workspace)
 
 
 if __name__ == "__main__":
@@ -61,7 +74,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
-    existingobjects = getallobjects()
+    existingobjects = getallobjects(arcpy.env.workspace)
 
     expectedobjects = []
 
