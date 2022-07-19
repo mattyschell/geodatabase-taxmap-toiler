@@ -192,7 +192,7 @@ We will ignore this reference data. But for reference here is a list.
 
 ## ESRI Workflow Manager
 
-Workflow manager data is in the JTX_ADMIN schema.
+Workflow manager data is in the JTX_ADMIN schema.  If the plan includes migrating the JTX tables then use the script jtx_missing_sample.bat.  
 
 * JTX_ACTIVITY_TYPES
 * JTX_AUX_PROPS
