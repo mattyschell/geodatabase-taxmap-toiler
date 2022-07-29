@@ -53,6 +53,10 @@ CALL %PROPY% %TAXTOILREPO%grantall.py versionedfeaturedatasets edit DOF_TAXMAP_E
 CALL %PROPY% %TAXTOILREPO%grantall.py featuredatasets view DOF_TAXMAP_EDITOR
 CALL %PROPY% %TAXTOILREPO%grantall.py featureclasses view DOF_TAXMAP_EDITOR
 CALL %PROPY% %TAXTOILREPO%grantall.py versionedtables edit DOF_TAXMAP_EDITOR
+CALL %PROPY% %TAXTOILREPO%grantall.py versionedfeaturedatasets edit ESRIUSER 
+CALL %PROPY% %TAXTOILREPO%grantall.py featuredatasets view ESRIUSER
+CALL %PROPY% %TAXTOILREPO%grantall.py featureclasses view ESRIUSER
+CALL %PROPY% %TAXTOILREPO%grantall.py versionedtables edit ESRIUSER
 CALL %PROPY% %TAXTOILREPO%analyzeall.py tables business
 CALL %PROPY% %TAXTOILREPO%analyzeall.py versionedtables delta
 CALL %PROPY% %TAXTOILREPO%analyzeall.py Cadastral delta

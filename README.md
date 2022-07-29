@@ -40,6 +40,8 @@ Edit the inventories under src/resources.
     * Empty except for ESRI keyset and log detritus
 * DOF_TAXMAP 
     * See "DOF_TAXMAP Data Inventory" section below
+* ESRIUSER
+    * Schema for advanced users to perform edits without the wizards
 * JTX_ADMIN 
     * 5 GB, migration TBD
 * MAP_VIEWER
