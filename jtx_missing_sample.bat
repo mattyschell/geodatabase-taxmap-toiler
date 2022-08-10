@@ -1,11 +1,12 @@
-REM executes from ArcGIS Pro conda environment
-REM SDEFILE env to target test location must be set
-set SDEFILE=XX:\gis\yyyyyyyyy\dev\zz-zzzzzz\dof_taxmap.sde
-set PYTHONPATH=C:\gis\geodatabase-toiler\src\py;C:\gis\geodatabase-taxmap-toiler\src\py;%PYTHONPATH%
-set SRCSDE=C:\xxx\Connections\oracle11g\yyy\zzz_zzzzzz.sde
-set TAXTOILREPO=C:\gis\geodatabase-taxmap-toiler\
-set TOILER=C:\gis\geodatabase-toiler\
-set PY27=C:\Python27\ArcGIS10.6\python.exe
-set PROPY=c:\Progra~1\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe
-CALL %PROPY% %TAXTOILREPO%deleteall.py jtxtables
-CALL %PROPY% %TAXTOILREPO%importall.py jtxtables %SRCSDE%
+set SRCSCHEMA=JTX_ADMIN
+set DESTSCHEMA=%SRCSCHEMA%
+set SRCPASS=xxx
+set DESTPASS=yyy
+set SRCDB=xxx.xxx.xxx
+set DESTDB=xxxxxxx
+set TABLES=JTX_CONN_INFO,JTX_JOB_TYPE_MAP_DOC,JTX_LAYERS,JTX_STEP_COMMENTS,JTX_TRANSACTIONS,JTX_TRANSACTIONS_TEMP,JTX_TRANSACTION_SESSIONS
+set EXPFILE=C:\temp\jtx_admin.dmp
+echo starting export to %EXPFILE%
+exp %SRCSCHEMA%/%SRCPASS%@%SRCDB% FILE=%EXPFILE% TABLES=(%TABLES%)
+echo starting import from %EXPFILE%
+imp %DESTSCHEMA%/%DESTPASS%@%DESTDB% FILE=%EXPFILE% TABLES=(%TABLES%) IGNORE=y

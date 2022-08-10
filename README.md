@@ -194,11 +194,15 @@ We will ignore this reference data. But for reference here is a list.
 
 ## ESRI Workflow Manager
 
-Workflow manager data is in the JTX_ADMIN schema.  If the plan includes migrating the JTX tables then use the script jtx_missing_sample.bat.  
+Workflow manager tables should not be migrated with ESRI tools like TableToTable. Workflow manager tables are "system tables," not ESRI-managed.
+
+Workflow manager data is in the JTX_ADMIN schema.  The plan is to migrate the JTX_ADMIN tables using the workflow manager GUI, which requires a license. Seven of the tables below tend to not be migrated, possibly because they are empty.  Use jtx_missing_sample.bat to migrate these.
+
+(*) = usually missing
 
 * JTX_ACTIVITY_TYPES
 * JTX_AUX_PROPS
-* JTX_CONN_INFO
+* JTX_CONN_INFO *
 * JTX_DATABASES
 * JTX_DATABASE_SCHEMA
 * JTX_DELETED_OBJECTS
@@ -223,12 +227,12 @@ Workflow manager data is in the JTX_ADMIN schema.  If the plan includes migratin
 * JTX_JOB_STEP_XREF
 * JTX_JOB_TYPES
 * JTX_JOB_TYPE_BLOB
-* JTX_JOB_TYPE_MAP_DOC
+* JTX_JOB_TYPE_MAP_DOC *
 * JTX_JOB_TYPE_PROPERTIES
 * JTX_JOB_TYPE_REL_CLASSES
 * JTX_JOB_TYPE_STEP
 * JTX_JOB_TYPE_STEP_XREF
-* JTX_LAYERS
+* JTX_LAYERS *
 * JTX_LOGIN_INFO
 * JTX_MAP_STORE
 * JTX_NOTIFICATIONS
@@ -251,14 +255,14 @@ Workflow manager data is in the JTX_ADMIN schema.  If the plan includes migratin
 * JTX_SPAT_NOTIF_RULE_CONDITION
 * JTX_STATUS
 * JTX_STATUS_HIST
-* JTX_STEP_COMMENTS
+* JTX_STEP_COMMENTS * 
 * JTX_STEP_STATUS
 * JTX_STEP_TYPE
 * JTX_TASK_ASSISTANT_WORKFLOWS
 * JTX_TOKEN_PARSERS
-* JTX_TRANSACTIONS
-* JTX_TRANSACTIONS_TEMP
-* JTX_TRANSACTION_SESSIONS
+* JTX_TRANSACTIONS *
+* JTX_TRANSACTIONS_TEMP * 
+* JTX_TRANSACTION_SESSIONS *
 * JTX_USERS
 * JTX_USER_GROUPS
 * JTX_USER_GROUP_JOB_FILTERS
