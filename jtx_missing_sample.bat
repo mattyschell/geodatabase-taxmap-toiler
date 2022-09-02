@@ -1,3 +1,5 @@
+REM If for some reason you want to pull over some jtx_tables
+REM This doesnt work for tables with BLOB columns
 set SRCSCHEMA=JTX_ADMIN
 set DESTSCHEMA=%SRCSCHEMA%
 set SRCPASS=xxx
