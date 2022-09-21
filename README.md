@@ -194,4 +194,6 @@ We will ignore this reference data. But for reference here is a list.
 
 ## ESRI Workflow Manager
 
-This repository does not toil in workflow manager data.
+This repository does not toil in workflow manager data. See [jtx_admin.md](https://github.com/mattyschell/geodatabase-taxmap-toiler/doc/blob/main/jtx_admin.md) 
+
+ 
