@@ -11,14 +11,16 @@ Using ArcGIS Desktop 10.6.1
 
 ![create workflow database](create_workflow_database.png)
 
-4. From Workflow Manager Administrator (19c target), I don’t know what this step is called, perhaps “create default workspace” ?  
+4. Close and re-open Workflow Manager Administrator.
+
+5. From Workflow Manager Administrator (19c target) create the default workspace  
 
 ![create default](default.png)
 
-5. The next step is officially named the “not so fun step.”  From Workflow Manager Administrator manually compare the jobs, steps, workflows, users, etc ensuring that all from the source 11g database imported to the 19c target.  The last set to compare should be “Maps.”
+6. The next step is officially named the “not so fun step.”  From Workflow Manager Administrator manually compare the jobs, steps, workflows, users, etc ensuring that all from the source 11g database imported to the 19c target.  The last set to compare should be “Maps.”
 
 ![compare](compare.png)
 
-6. If anything is missing we can use the same “Import/Export > Export Configuration” pattern for individual items in the tree.
+7. If anything is missing we can use the same “Import/Export > Export Configuration” pattern for individual items in the tree.
 
-7. Export Jobs. From the Workflow Manager toolbox in ArcCatalog select the “Export Jobs” tool to export from the source.  Then import to 19c.
+8. Export Jobs. From the Workflow Manager toolbox in ArcCatalog select the “Export Jobs” tool to export from the source.  Then import to 19c.
