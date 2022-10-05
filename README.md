@@ -33,6 +33,12 @@ Edit the inventories under src/resources.
 > sample_import.bat 
 ```
 
+Use this simple wrapper and call from Windows Scheduler to avoid idle time.
+
+```bat
+> migratedtm.bat 
+```
+
 ## Schema Inventory
 
 * DOF_EDITOR
