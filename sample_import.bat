@@ -18,12 +18,14 @@ set PYTHON2PATH=%TAXTOILREPO%\src\py27
 set PYTHONPATH=%PYTHON3PATH%
 set TABLES=DAB_ACTION_DEFINITION,DAB_AIR_RIGHTS,DAB_AIR_RIGHTS_DEFINITION,DAB_BOUNDARY_LINE,DAB_CONDO_CONVERSION,DAB_CONDO_UNITS,DAB_DOMAINS,DAB_REUC,DAB_SUBTERRANEAN_RIGHTS,DAB_TAX_LOTS,DAB_WIZARD_TRANSACTION,DTM_USER_MAINT,DTM_WORK_IN_PROGRESS,FINAL_ASMT
 set EXPFILE=%TEMP%\dof_taxmap.dmp
-REM migration starts here
+REM delete on reruns, does nothing on fresh runs
 CALL %PROPY% %TAXTOILREPO%deletefeaturedataset.py Cadastral
 CALL %PROPY% %TAXTOILREPO%deletefeaturedataset.py DCP
 CALL %PROPY% %TAXTOILREPO%deleteall.py relationshipclasses
 CALL %PROPY% %TAXTOILREPO%deleteall.py featureclasses
 CALL %PROPY% %TAXTOILREPO%deleteall.py tables
+CALL %PROPY% %TAXTOILREPO%deleteall.py cleantables
+REM migration starts here
 set PYTHONPATH=%PYTHON2PATH%
 CALL %PY27% %TAXTOILREPO%src\py27\importfeaturedataset27.py Cadastral %SRCSDE%
 CALL %PY27% %TAXTOILREPO%src\py27\importfeaturedataset27.py DCP %SRCSDE%

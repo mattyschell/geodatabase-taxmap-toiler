@@ -33,7 +33,7 @@ Edit the inventories under src/resources.
 > sample_import.bat 
 ```
 
-Use this simple wrapper and call from Windows Scheduler to avoid idle time.
+Use this simple wrapper and call from Windows Scheduler to avoid idle time. Estimated run time - approximately 4 hours.
 
 ```bat
 > migratedtm.bat 
@@ -163,29 +163,27 @@ Best to include these, the Wizards expect them even if they are not edited or ex
 
 ### Tables: Do Not Participate in Geodatabase
 
-Some of these tables store Portable Document Formatted maps as Binary Large Objects and are large.  Using arcpy to migrate this is inappropriate because added geodatabase-managed columns and column type migrations will blow up the wizards.
+Some of these tables store Portable Document Formatted maps as Binary Large Objects and are large.  Using arcpy to migrate these tables without some additional cleanup is inappropriate because added geodatabase-managed columns and column type migrations will blow up the wizards.
 
-Migrate with: TBD
-
-|  | Name | Registered | Versioned |
-| ---- | ---- | ---- | ---- |
-| 1. | DAB_ACTION_DEFINITION | N | N |
-| 2. | DAB_AIR_RIGHTS | N | N |
-| 3. | DAB_AIR_RIGHTS_DEFINITION | N | N |
-| 4. | DAB_BOUNDARY_LINE | N | N |
-| 5. | DAB_CONDO_CONVERSION | N | N |
-| 6. | DAB_CONDO_UNITS | N | N |
-| 7. | DAB_DOMAINS | N | N |
-| 8. | DAB_REUC | N | N |
-| 9. | DAB_SUBTERRANEAN_RIGHTS | N | N |
-| 10. | DAB_TAX_LOTS | N | N |
-| 11. | DAB_WIZARD_TRANSACTION | N | N |
-| 12. | DTM_USER_MAINT | N | N |
-| 13. | DTM_WORK_IN_PROGRESS | N | N |
-| 14. | FINAL_ASMT | N | N |
-| 15. | HAB | N | N |
-| 16. | MAP_INSET_LIBRARY | N | N |
-| 17. | MAP_LIBRARY | N | N |
+|  | Name | Registered | Versioned | Migrate with |
+| ---- | ---- | ---- | ---- | ---- |
+| 1. | DAB_ACTION_DEFINITION | N | N | exp/imp |
+| 2. | DAB_AIR_RIGHTS | N | N | exp/imp |
+| 3. | DAB_AIR_RIGHTS_DEFINITION | N | N | exp/imp |
+| 4. | DAB_BOUNDARY_LINE | N | N | exp/imp |
+| 5. | DAB_CONDO_CONVERSION | N | N | exp/imp |
+| 6. | DAB_CONDO_UNITS | N | N | exp/imp |
+| 7. | DAB_DOMAINS | N | N | exp/imp |
+| 8. | DAB_REUC | N | N | exp/imp |
+| 9. | DAB_SUBTERRANEAN_RIGHTS | N | N | exp/imp |
+| 10. | DAB_TAX_LOTS | N | N | exp/imp |
+| 11. | DAB_WIZARD_TRANSACTION | N | N | exp/imp |
+| 12. | DTM_USER_MAINT | N | N | exp/imp |
+| 13. | DTM_WORK_IN_PROGRESS | N | N | exp/imp |
+| 14. | FINAL_ASMT | N | N | exp/imp |
+| 15. | HAB | N | N | arcpy/sql |
+| 16. | MAP_INSET_LIBRARY | N | N | arcpy/sql |
+| 17. | MAP_LIBRARY | N | N | arcpy/sql |
 
 ### Spatial Data: Not Required Reference 
 
