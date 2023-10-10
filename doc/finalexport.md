@@ -10,9 +10,10 @@ REMINDER: Focus and do not execute deletes unless absolutely necessary.  A delet
 
 2. Copy-paste the Cadastral feature dataset from source to target
 
-3. Copy-paste the DCP feature  dataset from source to target
+3. Copy-paste the DCP feature dataset from source to target
 
-4. Use Table2table to export the three tables with big BLOB columns.  Remove the blob columns in the export
+4. Use Table2table to export the three tables with big BLOB columns. 
+
 * HAB
 * MAP_INSET_LIBRARY
 * MAP_LIBRARY
@@ -21,9 +22,9 @@ REMINDER: Focus and do not execute deletes unless absolutely necessary.  A delet
 
 6.  Copy and paste the rest to fill in the missing datasets.  Refer to finalexport1.png and finalexport2.png in this directory.
 
-![finalexport1](finalexport1.png)
+![finalexport1](./finalexport1.png)
 
-![finalexport2](finalexport2.png)
+![finalexport2](./finalexport2.png)
 
 
 
