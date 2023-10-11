@@ -6,25 +6,48 @@ Use ArcGIS Pro for all steps.  ArcCatalog (32 bit) seems to crash unexpectedly a
 
 REMINDER: Focus and do not execute deletes unless absolutely necessary.  A delete clicked on the production database is a risk here.   
 
+## Well defined steps
+
 1. Create the empty output file geodatabase
 
 2. Copy-paste the Cadastral feature dataset from source to target
 
 3. Copy-paste the DCP feature dataset from source to target
 
-4. Use Table2table to export the three tables with big BLOB columns. 
+4. Use Table2table to export the three big tables with binary large object columns. 
 
 * HAB
 * MAP_INSET_LIBRARY
 * MAP_LIBRARY
 
-5. Check the output for _1s that got dragged along from the steps above.  Take better notes next time. 
+## Chaos defined steps
 
-6.  Copy and paste the rest to fill in the missing datasets.  Refer to finalexport1.png and finalexport2.png in this directory.
+Copy and paste the rest to fill in the missing datasets.  Refer to the screenshots below including this important one.
 
-![finalexport1](./finalexport1.png)
+![condo_unit](./condo_unit.png)
 
-![finalexport2](./finalexport2.png)
+Do not touch the condo_unit view in the source database.  It is so horribly defined that viewing it will degrade the database and fire off alerts to DBA blackberries.   
+
+Copying database views into a file geodatabase materializes the views as permanent tables. Make sure the users of this geodatabase understand this.
+
+Source Views
+
+* AIR_RIGHT          
+* AIR_RIGHT_LOOKUP   
+* CONDOMINIUM        
+* SUBTERRANEAN       
+* SUBTERRANEAN_LOOKUP
+
+Good file geodatabase screenshots:
+
+![finalexport1](./finalexport1.PNG)
+
+![finalexport2](./finalexport2.PNG)
+
+Output geodatabase size estimates:
+
+* uncompressed: 38 GB
+* compressed: 31 GB
 
 
 
