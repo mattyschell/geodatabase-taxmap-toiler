@@ -1,5 +1,7 @@
 # Export to File Geodatabase
 
+Final export completed on November 22, 2023 Using ArcGIS Pro 3.0.0. Started at 9:15 am, upload to external site complete by 2pm.
+
 This is the export procedure we will use in the taxmap cutover from the legacy 10.2 Enterprise Geodatabase on Oracle 11g to the new application in Azure.  We will export required data from the dof_taxmap schema to a file geodatabase using copy and paste in ArcGIS Pro's catalog pane. Yes, that's right.
 
 Use ArcGIS Pro for all steps.  ArcCatalog (32 bit) seems to crash unexpectedly at various stages of export. 
